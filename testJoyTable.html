@@ -2,18 +2,12 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Client Side joyTable</title>
-</head>
-<body>
-	JoyTable Version: <label id="lbl_version"></label>&nbsp;&nbsp;
-	Spent time: <label id="lbl_time"></label>
-	<div id="myJoyTable1">
-	</div>
-    <!--引用jQuery-->
-	<link rel="stylesheet" type="text/css" href="css/joy.table.2.7-dev.css">
+    <title>Client Side JoyTable</title>
+	
+    <link rel="stylesheet" type="text/css" href="css/joy.table.2.7-dev.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 	
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>	
 	<!--script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script-->
 	<!--script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script><script type="text/javascript" src="js/date.util.js"></script-->
     <script type="text/javascript" src="js/string.util.js"></script>
@@ -32,123 +26,123 @@
 			
 			// use tbl1.ExportConfigurations() to gen config and then modify your self
 			var cfg = {
-	"list_title": {
-		"text": "table_myJoyTable1",
-		"style": "padding: 3px 5px"
-	},
-	"list_body": {
-		"show_collapse": true,
-		"style": "overflow: auto; padding: 0 1px 0 0; height:500px"
-	},
-	"table": {
-		"class": "table table-margin-bottom table-bordered table-hover table-striped small_font",
-		"style": "border-style: groove; border-color: transparent",
-		"show_sn_column": true
-	},
-	"unikeys": null,
-	"columns": [{
-			"header_text": "C0",
-			"name": "c0",
-			"data": "c0",
-			"style": "text-align:center"
-		}, {
-			"header_text": "C1",
-			"name": "c1",
-			"data": "c1",
-			"style": "text-align:center"
-		}, {
-			"header_text": "C2",
-			"name": "c2",
-			"data": "c2",
-			"style": "text-align:center"
-		}, {
-			"header_text": "C3",
-			"name": "c3",
-			"data": "c3",
-			"style": "text-align:center"
-		}, {
-			"header_text": "C4",
-			"name": "c4",
-			"data": "c4",
-			"style": "text-align:center"
-		}, {
-			"header_text": "C5",
-			"name": "c5",
-			"data": "c5",
-			"style": "text-align:center"
-		}, {
-			"header_text": "C6",
-			"name": "c6",
-			"data": "c6",
-			"style": "text-align:center"
-		}, {
-			"header_text": "C7",
-			"name": "c7",
-			"data": "c7",
-			"style": "text-align:center"
-		}, {
-			"header_text": "C8",
-			"name": "c8",
-			"data": "c8",
-			"style": "text-align:center"
-		}, {
-			"header_text": "C9",
-			"name": "c9",
-			"data": "c9",
-			"style": "text-align:center"
-		}, {
-			"header_text": "C10",
-			"name": "c10",
-			"data": "c10",
-			"style": "text-align:center"
-		}, {
-			"header_text": "C11",
-			"name": "c11",
-			"data": "c11",
-			"style": "text-align:center"
-		}, {
-			"header_text": "C12",
-			"name": "c12",
-			"data": "c12",
-			"style": "text-align:center"
-		}, {
-			"header_text": "C13",
-			"name": "c13",
-			"data": "c13",
-			"style": "text-align:center"
-		}, {
-			"header_text": "C14",
-			"name": "c14",
-			"data": "c14",
-			"style": "text-align:center"
-		}, {
-			"header_text": "C15",
-			"name": "c15",
-			"data": "c15",
-			"style": "text-align:center"
-		}, {
-			"header_text": "C16",
-			"name": "c16",
-			"data": "c16",
-			"style": "text-align:center"
-		}, {
-			"header_text": "C17",
-			"name": "c17",
-			"data": "c17",
-			"style": "text-align:center"
-		}, {
-			"header_text": "C18",
-			"name": "c18",
-			"data": "c18",
-			"style": "text-align:center"
-		}, {
-			"header_text": "C19",
-			"name": "c19",
-			"data": "c19",
-			"style": "text-align:center"
-		}
-	]
-};
+				"list_title": {
+					"text": "table_myJoyTable1",
+					"style": "padding: 3px 5px"
+				},
+				"list_body": {
+					"show_collapse": true,
+					"style": "overflow: auto; padding: 0 1px 0 0; height:500px"
+				},
+				"table": {
+					"class": "table table-margin-bottom table-bordered table-hover table-striped small_font",
+					"style": "border-style: groove; border-color: transparent",
+					"show_sn_column": true
+				},
+				"unikeys": null,
+				"columns": [{
+						"header_text": "C0",
+						"name": "c0",
+						"data": "c0",
+						"style": "text-align:center"
+					}, {
+						"header_text": "C1",
+						"name": "c1",
+						"data": "c1",
+						"style": "text-align:center"
+					}, {
+						"header_text": "C2",
+						"name": "c2",
+						"data": "c2",
+						"style": "text-align:center"
+					}, {
+						"header_text": "C3",
+						"name": "c3",
+						"data": "c3",
+						"style": "text-align:center"
+					}, {
+						"header_text": "C4",
+						"name": "c4",
+						"data": "c4",
+						"style": "text-align:center"
+					}, {
+						"header_text": "C5",
+						"name": "c5",
+						"data": "c5",
+						"style": "text-align:center"
+					}, {
+						"header_text": "C6",
+						"name": "c6",
+						"data": "c6",
+						"style": "text-align:center"
+					}, {
+						"header_text": "C7",
+						"name": "c7",
+						"data": "c7",
+						"style": "text-align:center"
+					}, {
+						"header_text": "C8",
+						"name": "c8",
+						"data": "c8",
+						"style": "text-align:center"
+					}, {
+						"header_text": "C9",
+						"name": "c9",
+						"data": "c9",
+						"style": "text-align:center"
+					}, {
+						"header_text": "C10",
+						"name": "c10",
+						"data": "c10",
+						"style": "text-align:center"
+					}, {
+						"header_text": "C11",
+						"name": "c11",
+						"data": "c11",
+						"style": "text-align:center"
+					}, {
+						"header_text": "C12",
+						"name": "c12",
+						"data": "c12",
+						"style": "text-align:center"
+					}, {
+						"header_text": "C13",
+						"name": "c13",
+						"data": "c13",
+						"style": "text-align:center"
+					}, {
+						"header_text": "C14",
+						"name": "c14",
+						"data": "c14",
+						"style": "text-align:center"
+					}, {
+						"header_text": "C15",
+						"name": "c15",
+						"data": "c15",
+						"style": "text-align:center"
+					}, {
+						"header_text": "C16",
+						"name": "c16",
+						"data": "c16",
+						"style": "text-align:center"
+					}, {
+						"header_text": "C17",
+						"name": "c17",
+						"data": "c17",
+						"style": "text-align:center"
+					}, {
+						"header_text": "C18",
+						"name": "c18",
+						"data": "c18",
+						"style": "text-align:center"
+					}, {
+						"header_text": "C19",
+						"name": "c19",
+						"data": "c19",
+						"style": "text-align:center"
+					}
+				]
+			};
 			
 			//tbl1.TableInitial($("#myJoyTable1"), null); // auto initial config
 			tbl1.TableInitial($("#myJoyTable1"), cfg);
@@ -183,5 +177,11 @@
 		}
 		
     </script>
+</head>
+<body>
+	JoyTable Version: <label id="lbl_version"></label>&nbsp;&nbsp;
+	Spent time: <label id="lbl_time"></label>
+	<div id="myJoyTable1">
+	</div>
 </body>
 </html>
