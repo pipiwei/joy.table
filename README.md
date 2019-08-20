@@ -1,5 +1,5 @@
 # joy.table
-a generic data table based on dom, jquery, jquery-ui, bootstrap css
+a generic data table based on dom, jquery, jquery-ui and css of bootstrap
 
 1. create a div tag
    <div id='myJoyTable1'></div>
@@ -22,9 +22,9 @@ for example:
 you can use tbl1.ExportConfigurations() to get the joytable config template string after tbl1.AddRows(data).
 use JSON.parse(configString) to recover string as JS object and then modify the config.
 
-
+===== file descriptions =====
 [testJoyTable.html]
- example file for joytable to render random data
+  example file for joytable to render 1000 records
  
 [testDataTable.html]
- render same data by jQuery.DataTable. use for performance compared to JoyTable 
+  render same data by jQuery.DataTable. use for performance comparison to JoyTable 
