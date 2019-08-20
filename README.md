@@ -21,3 +21,10 @@ for example:
   tbl1.TableInitial(document.getElemenyById('myJoyTable1'), cfg);
 you can use tbl1.ExportConfigurations() to get the joytable config template string after tbl1.AddRows(data).
 use JSON.parse(configString) to recover string as JS object and then modify the config.
+
+
+[testJoyTable.html]
+ example file for joytable to render random data
+ 
+[testDataTable.html]
+ render same data by jQuery.DataTable. use for performance compared to JoyTable 
