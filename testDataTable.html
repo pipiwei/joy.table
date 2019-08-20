@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Client Side jQuery DataTables</title>
+    <!--引用css-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+</head>
+<body>
+
+	Spent time: <label id="lbl_time"></label>
+    <table id="myDataTable1"  class="display" border="1"  >
+        <thead>
+            <tr>
+                <th>Column0</th>
+                <th>Column1</th>
+                <th>Column2</th>
+                <th>Column3</th>
+                <th>Column4</th>
+                <th>Column5</th>
+                <th>Column6</th>
+                <th>Column7</th>
+                <th>Column8</th>
+                <th>Column9</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <!--引用jQuery-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <!--引用dataTables.js-->
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+     
+    <script type="text/javascript">
+        $(function () {
+			init();
+        });
+		
+		function init() {
+			data1 = genDataMxN(1000, 20, true);
+            tbl1 = $("#myDataTable1").DataTable({
+				paging: false,
+				ordering: false, // disable default sort
+                searching: false, // disable filter
+                //columnDefs: [{
+				//	targets: [0, 1],
+                //    orderable: false,
+                //}],
+				columns: [
+					{ data: "c0", sortable: false },
+					{ data: "c1", sortable: false },
+					{ data: "c2", sortable: false },
+					{ data: "c3", sortable: false },
+					{ data: "c4", sortable: false },
+					{ data: "c5", sortable: false },
+					{ data: "c6", sortable: false },
+					{ data: "c7", sortable: false },
+					{ data: "c8", sortable: false },
+					{ data: "c9", sortable: false },					
+				]
+            });
+			
+			var old_time = new Date();
+			tbl1.rows.add(data1).draw(false);
+			var new_time = new Date();
+			var seconds_passed = new_time - old_time;
+			$("#lbl_time").text(seconds_passed + "ms");
+		}
+		
+		function genDataMxN(row, col, needKey) {
+			data = [];
+			for (var i=0; i<row;i ++) {
+				var tmpData;
+				if (needKey) {
+					tmpData = {};
+					for (var j=0; j<col; j++) {
+						tmpData["c"+j] = "r" + i + "c" + j;
+					}
+				}
+				else {
+					tmpData = [];
+					for (var j=0; j<col; j++) {
+						tmpData.push("r" + i + "c" + j);
+					}
+				}				
+				data.push(tmpData);
+			}
+			return data;
+		}
+		
+    </script>
+</body>
+</html>

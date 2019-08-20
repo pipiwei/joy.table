@@ -1,0 +1,18 @@
+/*
+ put the arrow in panel-heading (top-right of panel) 
+ to collapse the panel
+*/
+.panel-heading span.panel-title:after {
+	font-family:'Glyphicons Halflings';
+	content:"\e114";
+	font-size: 10pt;
+	float: right;
+	color: grey;
+	cursor: pointer;
+}
+.panel-heading span.collapsed:after {
+	content:"\e080";
+	font-size: 10pt;
+	cursor: pointer;
+}
+

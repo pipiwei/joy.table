@@ -1,0 +1,57 @@
+/* put the arrow in panel-heading (top-right of panel) to collapse the panel */
+.panel-heading span.panel-title:after {
+	font-family:'Glyphicons Halflings';
+	content:"\e114";
+	font-size: 10pt;
+	float: right;
+	color: grey;
+	cursor: pointer;
+}
+
+/* put the arrow in panel-heading (top-right of panel) to collapse the panel */
+.panel-heading span.collapsed:after {
+	content:"\e080";
+	font-size: 10pt;
+	cursor: pointer;
+}
+
+/* set element hidden */
+.hide {
+	display: none;
+}
+
+/* cursor set hand if sortable */
+.sortable {
+	cursor: pointer;
+}
+
+/* small font of table */
+.small_font,
+table.table,
+table.table > thead > tr > th,
+table.table > tbody > tr > td {
+	font-size: 10px !important;
+}
+
+/* color of the header column */
+.table > thead > tr > th {
+	background-color:#f5f5f5;
+    color: #707070;
+    border-bottom: 1px solid #000000;
+}
+
+/* highlight text color when row was focused */
+.highlight_text {
+	background-color:#70E4EA !important
+}
+
+/* highlight cell color when row was focused */
+.highlight_background {
+	background-color:lightgreen !important
+}
+
+/* style config of default serial number column */
+th.sn_col, td.sn_col{
+	width: 10px;
+	text-align: right
+}
