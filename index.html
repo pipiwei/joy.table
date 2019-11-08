@@ -1,0 +1,639 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>JoyTable Tutorial</title>
+    
+    <link rel="stylesheet" type="text/css" href="css/joy.table.2.7-dev.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>    
+    <!--script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script-->
+    <!--script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script-->
+    <script type="text/javascript" src="js/date.util.js"></script>
+    <script type="text/javascript" src="js/string.util.js"></script>
+    <script type="text/javascript" src="js/check.util.js"></script>
+    <script type="text/javascript" src="js/object.util.js"></script>
+    <script type="text/javascript" src="js/joy.table.3.1.js"></script>
+     
+    <script type="text/javascript">
+        $(function () {
+            init();
+        });
+        
+        function init() {
+            data1 = genStudents();//genDataMxN(1000, 20, true);
+            data2 = genStudents(2);
+            tbl0 = new JoyTable();
+            tbl1 = new JoyTable();
+            tbl2 = new JoyTable();
+            
+            // use tbl1.ExportConfigurations() to gen config and then modify your self
+            var cfg1 = {
+                        "list_title": {
+                            "text": "Students",
+                            "style": "padding: 3px 5px"
+                        },
+                        "list_body": {
+                            "show_collapse": false,
+                            "style": "overflow: auto; padding: 0 1px 0 0; height:300px;"
+                        },
+                        "table": {
+                            "class": "table table-margin-bottom table-bordered table-hover table-striped small_font table-fixed-header",
+                            "style": "border-style: groove; border-color: transparent;",
+                            "show_sn_column": false,
+                            "allow_un_focus": true,
+                            "selectable": false,
+                            "editable": false
+                        },
+                        "unikeys": null,
+                        "columns": [{
+                                "header_text": "No.",
+                                "name": "number",
+                                "data": "number",
+                                "style": "text-align:center;width:5%;",
+                                "class": null,
+                            }, {
+                                "header_text": "Name",
+                                "name": "name",
+                                "data": "name",
+                                "style": "text-align:center;width:20%;",
+                                "class": null,
+                            }, {
+                                "header_text": "Birthday",
+                                "name": "bday",
+                                "data": "bday",
+                                "date_type": "Date",
+                                "time_format": "yyyy-MM-dd",
+                                "style": "text-align:center;width:5%;",
+                                "class": null,
+                            }, {
+                                "header_text": "Age",
+                                "name": "age",
+                                "data": "age",
+                                "style": "text-align:center;width:5%;",
+                                "class": null,
+                            }, {
+                                "header_text": "Gender",
+                                "name": "sex",
+                                "data": "sex",
+                                "style": "text-align:center;width:5%;",
+                                "class": null,
+                            }, {
+                                "header_text": "Address",
+                                "name": "addr",
+                                "data": "addr",
+                                "style": "text-align:center;width:45%",
+                                "class": null,
+                                "content_style": "text-align:left;",
+                            }, {
+                                "header_text": "Has Car",
+                                "name": "hasCar",
+                                "data": "hasCar",
+                                "style": "text-align:center;width:5%;",
+                                "class": null,
+                                "data_type": "Boolean",
+                                "bool_format": { true: "Yes", false: "No" },
+                            }, {
+                                "header_text": "Stamp",
+                                "name": "stamp",
+                                "title_data": "stamp",
+                                "data": "stamp",
+                                "data_type": "Date",
+                                "time_format": "MM-dd hh:mm:ss",
+                                "style": "text-align:center;width:10%;",
+                                "class": null,
+                            }
+                        ]
+                    };
+
+            var cfg2 = {
+                        "list_title": {
+                            "text": "Students Ext",
+                            "style": "padding: 3px 5px"
+                        },
+                        "list_body": {
+                            "show_collapse": false,
+                            "style": "overflow: auto; padding: 0 1px 0 0; height:300px;"
+                        },
+                        "table": {
+                            "class": "table table-margin-bottom table-bordered table-hover table-striped small_font table-fixed-header",
+                            "style": "border-style: groove; border-color: transparent;",
+                            "show_sn_column": false,
+                            "allow_un_focus": true,
+                            "selectable": false,
+                            "editable": false
+                        },
+                        "unikeys": null,
+                        "columns": [{
+                                "header_text": "No.",
+                                "name": "number",
+                                "data": "number",
+                                "style": "text-align:center;width:5%;",
+                                "class": null,
+                            }, {
+                                "header_text": "Name",
+                                "name": "name",
+                                "data": "name",
+                                "style": "text-align:center;width:15%;",
+                                "class": null,
+                            }, {
+                                "header_text": "Birthday",
+                                "name": "bday",
+                                "data": "bday",
+                                "date_type": "Date",
+                                "time_format": "yyyy-MM-dd",
+                                "style": "text-align:center;width:5%;",
+                                "class": null,
+                            }, {
+                                "header_text": "Age",
+                                "name": "age",
+                                "data": "age",
+                                "style": "text-align:center;width:5%;",
+                                "class": null,
+                            }, {
+                                "header_text": "Gender",
+                                "name": "sex",
+                                "data": "sex",
+                                "style": "text-align:center;width:5%;",
+                                "class": null,
+                            }, {
+                                "header_text": "Address",
+                                "name": "addr",
+                                "data": "addr",
+                                "style": "text-align:center;width:25%",
+                                "class": null,
+                                "content_style": "text-align:left;",
+                            }, {
+                                "header_text": "Own Transportation",
+                                "name": "own_transportation",
+                                "data": "transportation",
+                                "negative_data": "None",
+                                "negative_data_is_text": true,
+                                "data_type": "Mapping",
+                                "mapping_format": { 1:"Scooter", 2:"Skateboard", 3:"Bicycle", 4:"Motocycle", 5:"Car", 6:"Helicopter", 7:"Plane" },
+                                "condition_statement": "data.transportation && data.transportation.length > 0",
+                                "style": "text-align:center",
+                                "class": null,
+                            }, {
+                                "header_text": "Has Car",
+                                "name": "hasCar",
+                                "data": "Yes",
+                                "data_is_text": true,
+                                "negative_data": "No",
+                                "negative_data_is_text": true,
+                                "style": "text-align:center;width:5%;",
+                                "condition_statement": "data.transportation && data.transportation.length > 0",
+                                "class": null,
+                            }, {
+                                "header_text": "Traffic",
+                                "name": "traffic",
+                                "dataset": [{
+                                    "data": "traffic",
+                                    "data_type": "Mapping",
+                                    "mapping_format": { 1: "Walk", 2: "Bus", 3: "Taxi", 4: "Private Transportation", "default": "Unknown" },
+                                    "condition_statement": "data.traffic!=4"
+                                }, {
+                                    "data": "transportation[0]",
+                                    "data_type": "Mapping",
+                                    "mapping_format": { 1:"Scooter", 2:"Skateboard", 3:"Bicycle", 4:"Motocycle", 5:"Car", 6:"Helicopter", 7:"Plane" },
+                                    "condition_statement": "data.traffic==4"
+                                }], 
+                                "style": "text-align:center",
+                                "class": null,
+                            }, {
+                                "header_text": "Self Driving",
+                                "name": "self_driving",
+                                "data": "Yes",
+                                "data_is_text": true,
+                                "negative_data": "No",
+                                "condition_statement": "data.traffic > 2 && data.hasCar",
+                                "style": "text-align:center",
+                                "class": null,
+                            }, {
+                                "header_text": "Stamp",
+                                "name": "stamp",
+                                "title_data": "stamp",
+                                "data": "stamp",
+                                "data_type": "Date",
+                                "time_format": "MM-dd hh:mm:ss",
+                                "style": "text-align:center;width:10%;",
+                                "class": null,
+                            }
+                        ]
+                    }
+
+            //tbl1.TableInitial($("#myJoyTable1"), null); // auto initial config
+            tbl0.TableInitial($("#myJoyTable0"), null);
+            tbl1.TableInitial($("#myJoyTable1"), cfg1);
+            tbl2.TableInitial($("#myJoyTable2"), cfg2);
+            
+            //var old_time = new Date();
+            tbl0.AddRows(data1);
+            tbl1.AddRows(data1);
+            tbl2.AddRows(data2);
+            //var new_time = new Date();
+            //var seconds_passed = new_time - old_time;
+            //$("#lbl_time").text(seconds_passed + "ms");
+            //$("#lbl_version").text(tbl1.GetVersion());
+        }
+        
+        function genDataMxN(row, col, needKey) {
+            data = [];
+            for (var i=0; i<row;i ++) {
+                var tmpData;
+                if (needKey) {
+                    tmpData = {};
+                    for (var j=0; j<col; j++) {
+                        tmpData["c"+j] = "r" + i + "c" + j;
+                    }
+                }
+                else {
+                    tmpData = [];
+                    for (var j=0; j<col; j++) {
+                        tmpData.push("r" + i + "c" + j);
+                    }
+                }                
+                data.push(tmpData);
+            }
+            return data;
+        }
+        
+        function getYYYYMMDDHHMMSS(dateObj) {
+            var YYYY = dateObj.getFullYear();
+            var MM = ("0" + (dateObj.getMonth() + 1)).slice(-2);
+            var DD = ("0" + dateObj.getDate()).slice(-2);
+            var hh = ("0" + dateObj.getHours()).slice(-2);
+            var mm = ("0" + dateObj.getMinutes()).slice(-2);
+            var dd = ("0" + dateObj.getSeconds()).slice(-2);
+            return YYYY + "-" + MM + "-" + DD + " " + hh + ":" + mm + ":" + dd;
+        }
+        
+        function genStudents(type) {
+            var boyNames = ["Oliver", "George", "Harry", "Noah", "Jack", "Charlie", "Leo", "Jacob", "Freddie", "Alfie", "Steve", "John"];
+            var girlNames = ["Emma", "Olivia", "Ava", "Isabella", "Sophia", "Charlotte", "Mia", "Amelia", "Harper", "Evelyn", "Jessie", "Ariel"];
+            var names = ["Abcde", "Efghi", "Ijklm", "Mnopq", "Qrstu", "Uvwxy", "Wxyz"];
+            var ownTransportation = [[1,2,3], [4], [4,5], [5], [5,6], [5,6,7]]; // 1:Scooter, 2:Skateboard, 3:Bicycle, 4:Motocycle, 5:Car, 6:Helicopter, 7:Plane
+            var trafficWay = [0, 1, 2, 3, 4]; // 0:unknown, 1:walk, 2:bus, 3:taxi, 4:ownTransportation
+            var hasCar = [true, false, false, true, true, true, false, false];
+            var students = [];            
+            for (var i=0; i<12; i++) {
+                var dateStr = (2000 - i) + "-" + ("0" + (i+1)).slice(-2) + "-" + ("0" + (i+1)).slice(-2);
+                var student = {
+                    number: (2*i+1),
+                    name: boyNames[i],
+                    bday: dateStr,
+                    age: (new Date(dateStr)).getAge(),
+                    sex: "Male",
+                    addr: 'No.' + (i+1) + ', ' + names[i%7] + ' Rd. ' + names[(i+1)%7] + ' City ',
+                    hasCar: hasCar[i%6],
+                    stamp: getYYYYMMDDHHMMSS(new Date())
+                };
+                if (type == 2) {
+                    if (student["hasCar"]) {
+                        student["traffic"] = trafficWay[i%5];
+                        student["transportation"] = ownTransportation[i%6];
+                    }
+                    else {
+                        student["traffic"] = trafficWay[i%4];
+                        student["transportation"] = [];
+                    }
+                }
+                students.push(student);
+                
+                dateStr = (2000 - i) + "-" + ("0" + (i+1)).slice(-2) + "-" + ("0" + (i+1)*2).slice(-2);
+                student = {
+                    number: (2*i+2),
+                    name: girlNames[i],
+                    bday: dateStr,
+                    age: (new Date(dateStr)).getAge(),
+                    sex: "Female",
+                    addr: 'No.' + (i+1) + ', ' + names[i%7] + ' Rd. ' + names[(i+1)%7] + ' City ',
+                    hasCar: hasCar[i%6],
+                    stamp: getYYYYMMDDHHMMSS(new Date())
+                };
+                if (type == 2) {
+                    if (student["hasCar"]) {
+                        student["traffic"] = trafficWay[(i+1)%5];
+                        student["transportation"] = ownTransportation[(i+1)%6];
+                    }
+                    else {
+                        student["traffic"] = trafficWay[(i+1)%4];
+                    }
+                }
+                students.push(student);
+            }
+            return students;
+        }
+        
+    </script>
+</head>
+<body>
+    <pre>
+        A generic data table based on dom, jquery, jquery-ui and css of bootstrap.
+        In html, to include below css and js file
+        CSS:
+            &#60;link rel="stylesheet" type="text/css" href="css/joy.table.2.7-dev.css"&#62;
+        JS:
+            &#60;script type="text/javascript" src="js/string.util.js"&#62;&#60;/script&#62;
+            &#60;script type="text/javascript" src="js/check.util.js"&#62;&#60;/script&#62;
+            &#60;script type="text/javascript" src="js/object.util.js"&#62;&#60;/script&#62;
+            &#60;script type="text/javascript" src="js/joy.table.3.js"&#62;&#60;/script&#62;
+        
+        And create a container tag, for example:
+        &#60;body&#62;
+            ...
+            &#60;div id="myJoyTable" /&#62;
+            ...
+        &#60;/body&#62;
+        
+        In script, need 3 step to show the data
+            1. New JoyTable
+               var myJoyTable = new JoyTable()
+            2. Initial JoyTable
+               myJoyTable.Initial($("#myJoyTable"));
+            3. Draw data
+               myJoyTable.AddRows(data);
+        Now, you finish drawing data as shown as below in JoyTable.
+    </pre>
+        <div id="myJoyTable0"></div>
+    <pre>
+        In step3, data to fill JoyTable is a list of object. Data property describe as below:
+            var data = [{ number: integer,
+                          name: "string",
+                          bday: "date time string",
+                          age: integer,
+                          sex: "string",
+                          addr: "string",
+                          hascar:,
+                          stamp: "date time string",
+                        }, ...
+                       ]
+        To use myJoyTable.AddRows(data) will plot all properties of object like example.        
+        After plot the table, you want to change the displaying text in table.
+        First, you could use myJoyTable.ExportConfigurations() to get the config for current data.
+        This config describe the layout rule. You can modify the config content and then fill when initial JoyTable (before AddRows).
+        For example: 
+            myJoyTable.Initial($("#myJoyTable", config)
+            
+        I made some normal changes as example here.
+            1. Chage the title of the table:
+               Set "Students" to "list_title.text". (default is container ID)
+            2. Change the height of the table and no need collapse arrow:
+               Set "height:300px" to "list_body.style". (default is 80vh)
+               Set "false" to "show_collapse". (default is true)
+            3. No need sn column and fix the header
+               Set "false" to "table.show_sn_column" as false
+               Add "table-fixed-header" to "table.class"
+            4. Change the displaying text of the header: 
+               Set wanted text to "columns[].header_text". (default is object key name)
+            4. Change the style of cell:
+               Use "columns[].style" to change layout style in &#60;TH&#62;.
+               Use "columns[].content_style" to change layout style in &#60;TD&#62;. (follow style if content_style not defined)               
+            5. Cell value replacement:
+               Sometimes, the value is true/false but user don't want to see boolean value.
+               Set "columns[].data_type" as "Boolean" and set mapping value to "columns[].bool_format".
+            6. Date time format
+               If the value is a date time string (yyyy-MM-dd HH:mm:ss), you can set "columns[].date_type" as "Date" and set format pattern to "time_format".
+               for example:
+                 yyyy-MM-dd hh:mm:ss -> 2018-12-31 23:59:59 (show year, month, date, hour, minutes and second)
+                 MM-dd hh:mm:ss -> 12-31 23:59:59 (ignore year)
+                 YYYY-MM-dd -> 2018-12-31 (ignore time)
+            7. Remove title_data config except stamp.
+               If define title_data, JoyTable will add title attribute (popup hint when mouse hover) to TD.
+            
+        The modified config as shown as below:
+            var config = {
+                list_title: { 
+                              text: "Students",
+                              ...
+                            },
+                list_body: { 
+                             show_collapse: false,
+                             style: "overflow: auto; padding: 0 1px 0 0; height:300px;"
+                },
+                table: {
+                         show_sn_column: false,
+                         class: "... table-fixed-header",
+                         ...
+                },
+                ...
+                columns: [ { 
+                              header_text: "No.",
+                              style: "text-align:center;width:5%;",
+                              ...
+                           }, { 
+                              header_text: "Name",
+                              style: "text-align:center;width:20%;",
+                              ...
+                           }, { 
+                              header_text: "Birthday",
+                              date_type: "Date",
+                              time_format: "yyyy-MM-dd",
+                              style: "text-align:center;width:5%;",
+                              ...
+                           }, { 
+                              header_text: "Age",
+                              style: "text-align:center;width:5%;",
+                              ...
+                           }, { 
+                              header_text: "Gender",
+                              style: "text-align:center;width:5%;",
+                              ...
+                           }, { 
+                              header_text: "Address",
+                              style: "text-align:center;width:45%;",
+                              content_style: "text-align:left;",
+                              ...
+                           }, { 
+                              header_text: "Has Car",
+                              style: "text-align:center;width:5%;",
+                              data_type: "Boolean",
+                              bool_format: { true: "Yes", false: "No" },
+                              ...
+                           }, { 
+                              style: "text-align:center;width:10%;",
+                              data_type: "Date",
+                              time_format: "MM-dd hh:mm:ss",
+                              ...
+                           },
+            };
+    </pre>
+        <div id="myJoyTable1"></div>
+    <pre>
+        The simple description for the layout structure of JoyTable:
+            A JoyTable was rendered at given DIV. There are two DIV container (title and body) in the root container.
+            In body DIV, it also include a inner DIV. And then the Table was rendered at inner DIV.
+            
+        All config describe as below:
+            1. list_title: config the title part of JoyTable
+            2. list_body: config the body part of JoyTable who contain the table
+                1. show_collapse: show/hide the collapse arrow
+                2. style: style of the outter body part of JoyTable
+            3. table: config the table part 
+                1. class: class attribute to the table
+                2. style: style attribute to the table
+                3. show_sn_column: show/hide the sn column (auto)
+                4. allow_un_focus: JoyTable support user click to highlight a row. this value allow user to cancel highlighted row or not
+                5. selectable: set true will auto insert a checkbox in font of the each row (after the sn_column). this value need set unikeys to identify each value
+                6. editable: set true to allow JoyTable suppoert edit
+            4. unikeys: a list of key name string. This like as primary key for searching list data in table
+            5. columns: a list of object for config the render rule of data. the order of columns effect the cell displaying order of JoyTable.
+                == config for ui layout ==
+                1. header_text: displaying text of the header
+                2. name: name attribute of the column
+                3. style: style attribute of the TH/TD cell                
+                4. class: class ttribute of the TH/TD cell
+                5. content_style: style attribute of the TD cell (overwite the style in TD)
+                6. content_class: class attribute of the TD cell (overwite the class in TD)
+                
+                == config for render html ==
+                7. text: html string, use escape character {{n}} to mapping value dataset[n].data
+                8. text_domtype: indicate the text is an special input dom type. 
+                    currently support select/input-text/radio-group for auto binding with data
+                
+                == config for data output ==
+                9. data: the key name of data. to display should binding the data source. 
+                    i.e: cell content => currentDataObj[config.columns[cellIndex].data]
+                10. data_type: describe the type of binding data. now support: "date", "boolean"
+                11. data_is_text: data is pure text not the key name of data. direct output content of data. 
+                    i.e:  cell content => config.column[cellIndex].data
+                12. dataset: (overwrite title_data)
+                    a list of object. when the display text are the combination value of multiple key of the data
+                    the object structure in dataset are same as data ouput part of column (5.9~5.12, 5.13~5.16)
+                13. condition_statement: 
+                    when condition_statement is true, process 5.9~5.12, else process 5.13~5.16
+                14. negative_data: same as data when condition_statement not satisfy
+                15. negative_data_type: same as data_type when condition_statement not satisfy
+                16. negative_data_is_text: same as data_is_text when condition_statement not satisfy
+                
+                ps. all keys of data output can append prefix "title_" for displaying value to title attribute of tag.
+                    i.e: title_data, title_dataset, title_condition_statement, ....
+                    
+        I made the other sample with more complex data. I want record the student more information
+            1. what kind of transportations he/she have
+            2. how to go to school
+            3. self driving (if he/she has transportation and use it)
+        So the data add 
+            1. traffic: way of student to the school. integer value: 1:Walk, 2:Bus, 3:Taxi, 4:Private Transportation
+            2. transportation: student own transportations. list of integer value: 1:Scooter, 2:Skateboard, 3:Bicycle, 4:Motocycle, 5:Car, 6:Helicopter, 7:Plane
+            
+        Here is the full configuration:
+            var extCfg = {
+                    list_title: {
+                        text: "Students Ext",
+                        style: "padding: 3px 5px"
+                    },
+                    list_body: {
+                        show_collapse: false,
+                        style: "overflow: auto; padding: 0 1px 0 0; height:300px;"
+                    },
+                    table: {
+                        class: "table table-margin-bottom table-bordered table-hover table-striped small_font table-fixed-header",
+                        style: "border-style: groove; border-color: transparent;",
+                        show_sn_column: false,
+                        allow_un_focus: true,
+                        selectable: false,
+                        editable: false
+                    },
+                    unikeys: null,
+                    columns: [{
+                            header_text: "No.",
+                            name: "number",
+                            data: "number",
+                            style: "text-align:center;width:5%;",
+                            class: null,
+                        }, {
+                            header_text: "Name",
+                            name: "name",
+                            data: "name",
+                            style: "text-align:center;width:15%;",
+                            class: null,
+                        }, {
+                            header_text: "Birthday",
+                            name: "bday",
+                            data: "bday",
+                            date_type: "Date",
+                            time_format: "yyyy-MM-dd",
+                            style: "text-align:center;width:5%;",
+                            class: null,
+                        }, {
+                            header_text: "Age",
+                            name: "age",
+                            data: "age",
+                            style: "text-align:center;width:5%;",
+                            class: null,
+                        }, {
+                            header_text: "Gender",
+                            name: "sex",
+                            data: "sex",
+                            style: "text-align:center;width:5%;",
+                            class: null,
+                        }, {
+                            header_text: "Address",
+                            name: "addr",
+                            data: "addr",
+                            style: "text-align:center;width:25%",
+                            class: null,
+                            content_style: "text-align:left;",
+                        }, {
+                            header_text: "Own Transportation",
+                            name: "own_transportation",
+                            data: "transportation",
+                            negative_data: "None",
+                            negative_data_is_text: true,
+                            data_type: "Mapping",
+                            mapping_format: { 1:"Scooter", 2:"Skateboard", 3:"Bicycle", 4:"Motocycle", 5:"Car", 6:"Helicopter", 7:"Plane" },
+                            condition_statement: "data.transportation && data.transportation.length > 0",
+                            style: "text-align:center",
+                            class: null,
+                        }, {
+                            header_text: "Has Car",
+                            name: "hasCar",
+                            data: "Yes",
+                            data_is_text: true,
+                            negative_data: "No",
+                            negative_data_is_text: true,
+                            style: "text-align:center;width:5%;",
+                            condition_statement: "data.transportation && data.transportation.length > 0",
+                            class: null,
+                        }, {
+                            header_text: "Traffic",
+                            name: "traffic",
+                            dataset: [{
+                                data: "traffic",
+                                data_type: "Mapping",
+                                mapping_format: { 1: "Walk", 2: "Bus", 3: "Taxi", 4: "Private Transportation", "default: "Unknown" },
+                                condition_statement: "data.traffic!=4"
+                            }, {
+                                data: "transportation[0]",
+                                data_type: "Mapping",
+                                mapping_format: { 1:"Scooter", 2:"Skateboard", 3:"Bicycle", 4:"Motocycle", 5:"Car", 6:"Helicopter", 7:"Plane" },
+                                condition_statement: "data.traffic==4"
+                            }], 
+                            style: "text-align:center",
+                            class: null,
+                        }, {
+                            header_text: "Self Driving",
+                            name: "self_driving",
+                            data: "Yes",
+                            data_is_text: true,
+                            negative_data: "No",
+                            condition_statement: "data.traffic > 2 && data.hasCar",
+                            style: "text-align:center",
+                            class: null,
+                        }, {
+                            header_text: "Stamp",
+                            name: "stamp",
+                            title_data: "stamp",
+                            data: "stamp",
+                            data_type: "Date",
+                            time_format: "MM-dd hh:mm:ss",
+                            style: "text-align:center;width:10%;",
+                            class: null,
+                        }
+                    ]
+                }        
+    </pre>
+        <div id="myJoyTable2"></div>
+</body>
+</html>

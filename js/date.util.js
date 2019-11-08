@@ -87,6 +87,10 @@ Date.prototype.getAge = function (d2) {
     return years;
 }
 
+// Get timezone of client browser
+function GetClientTimeZone() {
+	return -(new Date().getTimezoneOffset())/60;
+}
 // create a Date object with UTC from a string/number 
 // The created time object is the time as input, no more convert to client timezone deponds on different browser
 // if number. convert to Date directly
